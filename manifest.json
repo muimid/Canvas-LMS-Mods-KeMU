@@ -1,19 +1,20 @@
 {
-  "name": "Canvas LMS Mods (Basic)",
+  "name": "Canvas LMS Mods (KeMU)",
   "description": "This provides modifications to the Canvas LMS to improve the user experience visually and functionally.",
   "version": "7.5.1",
   "version_name": "7.5.1",
   "manifest_version": 3,
-  "permissions": ["storage"],
-  "host_permissions": [
-    "https://*.instructure.com/*",
-    "https://*.beta.instructure.com/*",
-    "https://*.test.instructure.com/*"
+  "permissions": [
+    "storage"
   ],
-  "optional_host_permissions": ["*://*/*"],
+  "host_permissions": [
+    "https://learn.kemu.ac.ke/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/*"
+      ],
       "js": [
         "canvas-mods/shared-locations/global/feature-logging/mod-logging.js",
         "utils/common/ski-canvas-lms-api-calls.js",
@@ -21,39 +22,32 @@
         "canvas-mods/shared-locations/global/feature-full-width-body/full-width-body.js",
         "canvas-mods/shared-locations/global/feature-admin-quick-access/feature-admin-quick-access-global-nav.js"
       ],
-      "css": ["utils/ski-ui-elements/ski-ui-styles.css"]
-    },
-    {
-      "matches": ["*://*.test.instructure.com/*"],
-      "js": [
-        "canvas-mods/shared-locations/global/feature-test-server-indicator/test-server-indicator.js"
-      ],
       "css": [
-        "canvas-mods/shared-locations/global/feature-test-server-indicator/test-server-indicator.css"
+        "utils/ski-ui-elements/ski-ui-styles.css"
       ]
     },
     {
-      "matches": ["*://*.beta.instructure.com/*"],
-      "js": [
-        "canvas-mods/shared-locations/global/feature-beta-server-indicator/beta-server-indicator.js"
+      "matches": [
+        "https://learn.kemu.ac.ke/"
       ],
-      "css": [
-        "canvas-mods/shared-locations/global/feature-beta-server-indicator/beta-server-indicator.css"
-      ]
-    },
-    {
-      "matches": ["*://*/"],
       "js": [
         "canvas-mods/dashboard-home/feature-all-courses-link/all-courses-link.js",
         "canvas-mods/dashboard-home/feature-grades-on-course-cards/grades-on-course-cards.js"
       ]
     },
     {
-      "matches": ["*://*/profile"],
-      "js": ["canvas-mods/profile/feature-view-grades/profile-view-grades.js"]
+      "matches": [
+        "https://learn.kemu.ac.ke/profile"
+      ],
+      "js": [
+        "canvas-mods/profile/feature-view-grades/profile-view-grades.js"
+      ]
     },
     {
-      "matches": ["*://*/courses", "*://*/courses?*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses",
+        "https://learn.kemu.ac.ke/courses?*"
+      ],
       "js": [
         "utils/ski-ui-elements/ski-table-elements/ski-table.js",
         "utils/ski-ui-elements/ski-report/ski-report.js",
@@ -64,7 +58,9 @@
       ]
     },
     {
-      "matches": ["*://*/courses/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*"
+      ],
       "js": [
         "utils/ski-ui-elements/ski-table-elements/ski-table.js",
         "utils/ski-ui-elements/ski-report/ski-report.js",
@@ -80,14 +76,18 @@
       ]
     },
     {
-      "matches": ["*://*/courses/*/assignments"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/assignments"
+      ],
       "js": [
         "canvas-mods/courses/assignments/feature-load-assignment-details/load-assignment-details.js",
         "canvas-mods/courses/assignments/feature-expand-collapse/expand-collapse-assignment-groups.js"
       ]
     },
     {
-      "matches": ["*://*/courses/*/assignments/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/assignments/*"
+      ],
       "js": [
         "canvas-mods/courses/assignments/feature-export-grades/assignment-export-grades.js",
         "canvas-mods/courses/assignments/feature-rubric-use-for-grading-notification/rubric-use-for-grading-notification.js",
@@ -95,13 +95,17 @@
       ]
     },
     {
-      "matches": ["*://*/courses/*/discussion_topics/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/discussion_topics/*"
+      ],
       "js": [
         "canvas-mods/courses/discussion-topics/feature-export-grades/discussion-export-grades.js"
       ]
     },
     {
-      "matches": ["*://*/courses/*/statistics"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/statistics"
+      ],
       "js": [
         "utils/ski-ui-elements/ski-table-elements/ski-table.js",
         "utils/ski-ui-elements/ski-report/ski-report.js",
@@ -122,14 +126,18 @@
       ]
     },
     {
-      "matches": ["*://*/courses/*/groups*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/groups*"
+      ],
       "js": [
         "canvas-mods/courses/groups/feature-export-group-set/export-group-set.js",
         "canvas-mods/courses/groups/feature-expand-collapse-groups/expand-collapse-groups.js"
       ]
     },
     {
-      "matches": ["*://*/courses/*/users"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/users"
+      ],
       "js": [
         "canvas-mods/courses/users/feature-export-users/export-users-in-course.js",
         "canvas-mods/courses/users/feature-inactive-users-filter/inactive-users-filter.js",
@@ -138,13 +146,17 @@
       ]
     },
     {
-      "matches": ["*://*/courses/*/users/*/usage"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/users/*/usage"
+      ],
       "js": [
         "canvas-mods/courses/users/usage/feature-export-access-report/feature-export-access-report.js"
       ]
     },
     {
-      "matches": ["*://*/courses/*/gradebook/speed_grader*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/gradebook/speed_grader*"
+      ],
       "js": [
         "canvas-mods/courses/gradebook/speed_grader/feature-draft-comment-indicator/draft-comment-indicator.js",
         "canvas-mods/courses/gradebook/speed_grader/feature-hyperlink-text-links-in-comments/hyperlink-text-links-in-comments.js"
@@ -154,7 +166,9 @@
       ]
     },
     {
-      "matches": ["*://*/courses/*/sections/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/courses/*/sections/*"
+      ],
       "js": [
         "utils/ski-ui-elements/ski-table-elements/ski-table.js",
         "utils/ski-ui-elements/ski-report/ski-report.js",
@@ -169,13 +183,18 @@
       ]
     },
     {
-      "matches": ["*://*/users/*/grades"],
+      "matches": [
+        "https://learn.kemu.ac.ke/users/*/grades"
+      ],
       "js": [
         "canvas-mods/users/grades/feature-update-user-info-on-grades/update-user-info-on-grades.js"
       ]
     },
     {
-      "matches": ["*://*/accounts/*/users/*", "*://*/users/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/users/*",
+        "https://learn.kemu.ac.ke/users/*"
+      ],
       "js": [
         "utils/ski-ui-elements/ski-table-elements/ski-table.js",
         "utils/ski-ui-elements/ski-report/ski-report.js",
@@ -187,23 +206,31 @@
         "canvas-mods/shared-locations/users/feature-enhance-groups-list/enhance-groups-list-user.js",
         "canvas-mods/shared-locations/users/feature-resizeable-avatar/resizeable-avatar-user.js"
       ],
-      "css": ["utils/ski-ui-elements/ski-table-elements/ski-table-elements.css"]
+      "css": [
+        "utils/ski-ui-elements/ski-table-elements/ski-table-elements.css"
+      ]
     },
     {
-      "matches": ["*://*/accounts/*/avatars*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/avatars*"
+      ],
       "js": [
         "canvas-mods/accounts/avatars/feature-resize-profile-review-images/resize-profile-review-images.js"
       ]
     },
     {
-      "matches": ["*://*/accounts/*"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*"
+      ],
       "js": [
         "canvas-mods/accounts/home-courses-search/feature-enhance-search-form/enhance-search-form-courses.js",
         "canvas-mods/accounts/home-courses-search/feature-enhance-search-results/enhance-search-results-courses.js"
       ]
     },
     {
-      "matches": ["*://*/accounts/*/terms"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/terms"
+      ],
       "js": [
         "canvas-mods/accounts/terms/feature-add-term-button-to-top/add-term-button-to-top.js",
         "canvas-mods/accounts/terms/feature-show-term-id/show-term-id.js",
@@ -211,13 +238,17 @@
       ]
     },
     {
-      "matches": ["*://*/accounts/*/question_banks"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/question_banks"
+      ],
       "js": [
         "canvas-mods/accounts/question_banks/feature-search-question-banks/search-question-banks.js"
       ]
     },
     {
-      "matches": ["*://*/accounts/*/sub_accounts"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/sub_accounts"
+      ],
       "js": [
         "canvas-mods/accounts/sub_accounts/feature-show-ids/show-ids-sub-accounts.js",
         "canvas-mods/accounts/sub_accounts/feature-search-accounts/search-sub-accounts.js",
@@ -225,13 +256,18 @@
       ]
     },
     {
-      "matches": ["*://*/accounts/*/sis_import"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/sis_import"
+      ],
       "js": [
         "canvas-mods/accounts/sis_import/feature-sis-import-log/sis-import-log.js"
       ]
     },
     {
-      "matches": ["*://*/accounts/*/rubrics", "*://*/courses/*/rubrics"],
+      "matches": [
+        "https://learn.kemu.ac.ke/accounts/*/rubrics",
+        "https://learn.kemu.ac.ke/courses/*/rubrics"
+      ],
       "js": [
         "canvas-mods/shared-locations/rubrics/feature-drag-and-drop-rubric-rows/drag-and-drop-rubric-rows.js",
         "canvas-mods/shared-locations/rubrics/feature-import-rubric/import-rubric.js",
@@ -241,9 +277,9 @@
     },
     {
       "matches": [
-        "*://*/accounts/*/rubrics/*",
-        "*://*/courses/*/rubrics/*",
-        "*://*/courses/*/assignments/*"
+        "https://learn.kemu.ac.ke/accounts/*/rubrics/*",
+        "https://learn.kemu.ac.ke/courses/*/rubrics/*",
+        "https://learn.kemu.ac.ke/courses/*/assignments/*"
       ],
       "js": [
         "utils/ski-ui-elements/ski-table-elements/ski-table.js",
@@ -255,7 +291,9 @@
         "canvas-mods/shared-locations/rubrics/feature-search-rubrics/search-rubrics.js",
         "canvas-mods/shared-locations/rubrics/feature-load-rubric-associations/load-rubric-associations.js"
       ],
-      "css": ["utils/ski-ui-elements/ski-table-elements/ski-table-elements.css"]
+      "css": [
+        "utils/ski-ui-elements/ski-table-elements/ski-table-elements.css"
+      ]
     }
   ],
   "icons": {
