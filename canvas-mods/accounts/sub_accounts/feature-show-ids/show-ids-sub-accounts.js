@@ -94,7 +94,7 @@
     );
     await new Promise((r) => setTimeout(r, requestNum * 10));
     const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
-    fetch(`${baseUrl}/api/v1/accounts/${canvasId}`)
+    fetch(`${baseUrl}/api/v1/accounts/${canvasId}`, { headers: { Accept: "application/json" } })
       .then((response) => response.json())
       .then((data) => {
         let sisId = data["sis_account_id"];

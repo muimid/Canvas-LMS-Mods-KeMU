@@ -36,7 +36,7 @@
       const accountNumber = item.querySelector("a").href.split("/").pop();
       const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
       const url = `${baseUrl}/api/v1/accounts/${accountNumber}/admins?user_id[]=${userId}`; // TODO Update to be paginated
-      fetch(url)
+      fetch(url, { headers: { Accept: "application/json" } })
         .then(response => response.json())
         .then(data => {
           let adminRoleDetails = "";

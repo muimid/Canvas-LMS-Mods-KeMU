@@ -72,7 +72,7 @@
 
     const fetches = [];
     fetches.push(
-      fetch(url)
+      fetch(url, { headers: { Accept: "application/json" } })
         .then((response) => response.json())
         .then((data) => {
           user = data;

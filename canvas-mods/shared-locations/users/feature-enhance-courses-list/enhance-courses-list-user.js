@@ -557,7 +557,7 @@
               .replace("courses", "")
               .replaceAll("/", "");
             const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
-            fetch(`${baseUrl}/api/v1/courses/${canvasCourseCode}`)
+            fetch(`${baseUrl}/api/v1/courses/${canvasCourseCode}`, { headers: { Accept: "application/json" } })
               .then((response) => response.json())
               .then((data) => {
                 const courseCode = data?.course_code;

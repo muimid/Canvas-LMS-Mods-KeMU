@@ -40,7 +40,7 @@ class SkiCanvasLmsApiCaller {
     }
 
     let requestResponse;
-    return await fetch(requestUrl)
+    return await fetch(requestUrl, { headers: { Accept: "application/json" } })
       .then((response) => {
         requestResponse = response;
         return response.json();
