@@ -257,9 +257,12 @@
 
   function getPermissions(accountId = "self") {
     let userPermissions = {};
+    if (!accountId) {
+      accountId = "self";
+    }
     const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
     const url = `${baseUrl}/api/v1/accounts/${accountId}/permissions`;
-    return fetch(url)
+    return fetch(url, { headers: { Accept: "application/json" } })
       .then((response) => {
         return response.json();
       })
@@ -683,20 +686,22 @@
 
   function paginatedRequest(url, results, keyForArray) {
     let nextUrl = "";
-    return fetch(url)
+    return fetch(url, { headers: { Accept: "application/json" } })
       .then((response) => {
         let links = response.headers.get("link");
-        links = links
-          .replaceAll("<", "")
-          .replaceAll(">", "")
-          .replaceAll(" rel=", "")
-          .replaceAll('"', "");
-        links = links.split(",");
-        links = links.map((link) => link.split(";"));
-        const linkDictionary = {};
-        links.forEach((link) => (linkDictionary[link[1]] = link[0]));
+        if (links) {
+          links = links
+            .replaceAll("<", "")
+            .replaceAll(">", "")
+            .replaceAll(" rel=", "")
+            .replaceAll('"', "");
+          links = links.split(",");
+          links = links.map((link) => link.split(";"));
+          const linkDictionary = {};
+          links.forEach((link) => (linkDictionary[link[1]] = link[0]));
 
-        nextUrl = linkDictionary["next"];
+          nextUrl = linkDictionary["next"];
+        }
 
         return response.json();
       })
