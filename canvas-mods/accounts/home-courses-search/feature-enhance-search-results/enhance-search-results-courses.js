@@ -70,7 +70,7 @@
     }
     url.searchParams.append("include[]", "ui_invoked");
     url.searchParams.append("teacher_limit", 25);
-    return fetch(url)
+    return fetch(url, { headers: { Accept: "application/json" } })
       .then((response) => {
         return response.json();
       })
@@ -91,7 +91,7 @@
     const url = new URL(
       `${window.location.protocol}//${window.location.hostname}/api/v1${window.location.pathname}/courses/${courseId}`
     );
-    return fetch(url)
+    return fetch(url, { headers: { Accept: "application/json" } })
       .then((response) => {
         return response.json();
       })
@@ -109,7 +109,7 @@
     const url = new URL(
       `${window.location.protocol}//${window.location.hostname}/api/v1/accounts/self/permissions`
     );
-    return fetch(url)
+    return fetch(url, { headers: { Accept: "application/json" } })
       .then((response) => {
         return response.json();
       })
