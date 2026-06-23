@@ -249,16 +249,19 @@
 
     let fetches = [];
     fetches.push(
-      fetch(url)
+      fetch(url, { headers: { Accept: "application/json" } })
         .then(response => {
+          let nextUrl;
           let links = response.headers.get("link");
-          links = links.replaceAll("<", "").replaceAll(">", "").replaceAll(" rel=", "").replaceAll('"', "");
-          links = links.split(",");
-          links = links.map(link => link.split(";"));
-          const linkDictionary = {};
-          links.forEach(link => linkDictionary[link[1]] = link[0]);
+          if (links) {
+            links = links.replaceAll("<", "").replaceAll(">", "").replaceAll(" rel=", "").replaceAll('"', "");
+            links = links.split(",");
+            links = links.map(link => link.split(";"));
+            const linkDictionary = {};
+            links.forEach(link => linkDictionary[link[1]] = link[0]);
 
-          const nextUrl = linkDictionary["next"];
+            nextUrl = linkDictionary["next"];
+          }
           if (nextUrl) {
             nextButton.dataset.url = nextUrl;
             nextButton.disabled = false;
